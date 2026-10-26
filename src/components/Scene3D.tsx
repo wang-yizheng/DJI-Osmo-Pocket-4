@@ -66,8 +66,8 @@ export default function Scene3D({
 
     // Scene
     const scene = new THREE.Scene();
-    scene.background = new THREE.Color(0x0a0a0f);
-    scene.fog = new THREE.Fog(0x0a0a0f, 15, 30);
+    scene.background = new THREE.Color(0xffffff);
+    scene.fog = new THREE.Fog(0xffffff, 15, 30);
 
     // Camera
     const camera = new THREE.PerspectiveCamera(45, width / height, 0.1, 100);
@@ -88,26 +88,26 @@ export default function Scene3D({
     container.appendChild(renderer.domElement);
 
     // Lights
-    const ambientLight = new THREE.AmbientLight(0x404060, 0.6);
+    const ambientLight = new THREE.AmbientLight(0xffffff, 1.0);
     scene.add(ambientLight);
 
-    const mainLight = new THREE.DirectionalLight(0xffffff, 1.5);
+    const mainLight = new THREE.DirectionalLight(0xffffff, 1.8);
     mainLight.position.set(5, 8, 5);
     mainLight.castShadow = true;
     mainLight.shadow.mapSize.width = 2048;
     mainLight.shadow.mapSize.height = 2048;
     scene.add(mainLight);
 
-    const fillLight = new THREE.DirectionalLight(0x4488ff, 0.4);
+    const fillLight = new THREE.DirectionalLight(0xddeeff, 0.6);
     fillLight.position.set(-5, 3, -5);
     scene.add(fillLight);
 
-    const rimLight = new THREE.DirectionalLight(0xff8844, 0.3);
+    const rimLight = new THREE.DirectionalLight(0xffeedd, 0.4);
     rimLight.position.set(0, -3, 5);
     scene.add(rimLight);
 
     // Ground plane (subtle grid)
-    const gridHelper = new THREE.GridHelper(20, 40, 0x222233, 0x111122);
+    const gridHelper = new THREE.GridHelper(20, 40, 0xccccdd, 0xe8e8ee);
     gridHelper.position.y = -3;
     scene.add(gridHelper);
 

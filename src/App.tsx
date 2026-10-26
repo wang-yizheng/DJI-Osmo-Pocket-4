@@ -22,7 +22,7 @@ export default function App() {
   const activeModule = selectedModule !== null ? selectedModule : hoveredModule;
 
   return (
-    <div className="relative w-full h-full overflow-hidden bg-[#0a0a0f]">
+    <div className="relative w-full h-full overflow-hidden bg-white">
       {/* 3D Scene */}
       <Scene3D
         explodeProgress={explodeProgress}
@@ -37,18 +37,18 @@ export default function App() {
       <div className="absolute top-0 left-0 right-0 pointer-events-none z-10">
         <div className="flex items-center justify-between px-6 py-4">
           <div>
-            <h1 className="text-2xl font-bold text-white tracking-tight">
+            <h1 className="text-2xl font-bold text-gray-900 tracking-tight">
               DJI Osmo Pocket 4
             </h1>
-            <p className="text-sm text-gray-400 mt-0.5">交互式3D结构拆解 · Interactive 3D Teardown</p>
+            <p className="text-sm text-gray-500 mt-0.5">交互式3D结构拆解 · Interactive 3D Teardown</p>
           </div>
           <div className="flex items-center gap-3 pointer-events-auto">
             <button
               onClick={() => setAutoRotate(!autoRotate)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                 autoRotate
-                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                  : 'bg-white/5 text-gray-400 border border-white/10'
+                  ? 'bg-blue-50 text-blue-600 border border-blue-200'
+                  : 'bg-gray-100 text-gray-500 border border-gray-200'
               }`}
             >
               {autoRotate ? '⟳ 自动旋转' : '⟳ 手动控制'}
@@ -57,8 +57,8 @@ export default function App() {
               onClick={() => setShowInfo(!showInfo)}
               className={`px-3 py-1.5 rounded-full text-xs font-medium transition-all ${
                 showInfo
-                  ? 'bg-blue-500/20 text-blue-400 border border-blue-500/30'
-                  : 'bg-white/5 text-gray-400 border border-white/10'
+                  ? 'bg-blue-50 text-blue-600 border border-blue-200'
+                  : 'bg-gray-100 text-gray-500 border border-gray-200'
               }`}
             >
               {showInfo ? '◉ 信息面板' : '○ 信息面板'}
@@ -69,13 +69,13 @@ export default function App() {
 
       {/* Explode Slider */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 pointer-events-auto">
-        <div className="bg-black/60 backdrop-blur-xl rounded-2xl border border-white/10 px-6 py-4 w-[400px] max-w-[90vw]">
+        <div className="bg-white/80 backdrop-blur-xl rounded-2xl border border-gray-200 px-6 py-4 w-[400px] max-w-[90vw] shadow-lg shadow-gray-200/50">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs text-gray-400">组装</span>
-            <span className="text-xs text-white font-medium">
+            <span className="text-xs text-gray-500">组装</span>
+            <span className="text-xs text-gray-900 font-medium">
               拆解程度 {Math.round(explodeProgress * 100)}%
             </span>
-            <span className="text-xs text-gray-400">完全拆解</span>
+            <span className="text-xs text-gray-500">完全拆解</span>
           </div>
           <input
             type="range"
@@ -97,19 +97,19 @@ export default function App() {
           <div className="flex justify-between mt-3 gap-2">
             <button
               onClick={() => setExplodeProgress(0)}
-              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 text-gray-300 hover:bg-white/10 transition-all border border-white/5"
+              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all border border-gray-200"
             >
               组装状态
             </button>
             <button
               onClick={() => setExplodeProgress(0.5)}
-              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 text-gray-300 hover:bg-white/10 transition-all border border-white/5"
+              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all border border-gray-200"
             >
               半拆解
             </button>
             <button
               onClick={() => setExplodeProgress(1)}
-              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-white/5 text-gray-300 hover:bg-white/10 transition-all border border-white/5"
+              className="flex-1 px-3 py-1.5 rounded-lg text-xs font-medium bg-gray-50 text-gray-700 hover:bg-gray-100 transition-all border border-gray-200"
             >
               完全拆解
             </button>
@@ -129,10 +129,10 @@ export default function App() {
                 onMouseLeave={() => setHoveredModule(null)}
                 className={`w-full text-left px-3 py-2 rounded-xl transition-all duration-200 ${
                   selectedModule === index
-                    ? 'bg-white/15 border border-white/20 shadow-lg'
+                    ? 'bg-white shadow-md border border-gray-200'
                     : hoveredModule === index
-                    ? 'bg-white/8 border border-white/10'
-                    : 'bg-white/3 border border-transparent hover:bg-white/6'
+                    ? 'bg-white/80 border border-gray-200'
+                    : 'bg-white/40 border border-transparent hover:bg-white/70'
                 }`}
               >
                 <div className="flex items-center gap-2">
@@ -141,10 +141,10 @@ export default function App() {
                     style={{ backgroundColor: mod.color }}
                   />
                   <div className="min-w-0">
-                    <div className="text-xs font-medium text-white truncate">
+                    <div className="text-xs font-medium text-gray-900 truncate">
                       {mod.name}
                     </div>
-                    <div className="text-[10px] text-gray-500 truncate">
+                    <div className="text-[10px] text-gray-400 truncate">
                       {mod.nameEn}
                     </div>
                   </div>
@@ -158,14 +158,14 @@ export default function App() {
       {/* Module Detail Panel - Right Side */}
       {showInfo && activeModule !== null && (
         <div className="absolute right-4 top-20 z-10 pointer-events-auto w-72 animate-in fade-in slide-in-from-right-4 duration-300">
-          <div className="bg-black/70 backdrop-blur-xl rounded-2xl border border-white/10 p-5">
+          <div className="bg-white/90 backdrop-blur-xl rounded-2xl border border-gray-200 p-5 shadow-lg shadow-gray-200/50">
             <div className="flex items-center gap-3 mb-3">
               <div
                 className="w-4 h-4 rounded-full"
                 style={{ backgroundColor: modules[activeModule].color }}
               />
               <div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-sm font-bold text-gray-900">
                   {modules[activeModule].name}
                 </h3>
                 <p className="text-xs text-gray-500">
@@ -173,13 +173,13 @@ export default function App() {
                 </p>
               </div>
             </div>
-            <p className="text-xs text-gray-300 leading-relaxed">
+            <p className="text-xs text-gray-600 leading-relaxed">
               {modules[activeModule].description}
             </p>
-            <div className="mt-3 pt-3 border-t border-white/5">
+            <div className="mt-3 pt-3 border-t border-gray-100">
               <div className="flex items-center gap-2">
-                <span className="text-[10px] text-gray-500">模块编号</span>
-                <span className="text-[10px] text-white font-mono">
+                <span className="text-[10px] text-gray-400">模块编号</span>
+                <span className="text-[10px] text-gray-700 font-mono">
                   #{String(activeModule + 1).padStart(2, '0')}
                 </span>
               </div>
@@ -190,16 +190,16 @@ export default function App() {
 
       {/* Instructions */}
       <div className="absolute bottom-2 left-1/2 -translate-x-1/2 z-10 pointer-events-none">
-        <p className="text-[10px] text-gray-600 text-center">
+        <p className="text-[10px] text-gray-400 text-center">
           拖拽旋转 · 滚轮缩放 · 点击选择模块
         </p>
       </div>
 
       {/* Decorative corner elements */}
-      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-blue-500/30 pointer-events-none" />
-      <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-blue-500/30 pointer-events-none" />
-      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-blue-500/30 pointer-events-none" />
-      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-blue-500/30 pointer-events-none" />
+      <div className="absolute top-4 left-4 w-8 h-8 border-l-2 border-t-2 border-gray-300 pointer-events-none" />
+      <div className="absolute top-4 right-4 w-8 h-8 border-r-2 border-t-2 border-gray-300 pointer-events-none" />
+      <div className="absolute bottom-4 left-4 w-8 h-8 border-l-2 border-b-2 border-gray-300 pointer-events-none" />
+      <div className="absolute bottom-4 right-4 w-8 h-8 border-r-2 border-b-2 border-gray-300 pointer-events-none" />
     </div>
   );
 }
